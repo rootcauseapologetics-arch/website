@@ -13,47 +13,71 @@ interface DetailProps {
   biblical_response: string;
 }
 
-const Detail = ({ claim, root_issue, analysis, biblical_response, tag, source_type }: DetailProps) => {
+const Detail = ({ claim, root_issue, analysis, biblical_response, tag, source_type, source_url }: DetailProps) => {
   return (
-    <div className="max-w-3xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-sm border border-gray-200 dark:border-gray-700 my-8">
-      <div className="flex justify-between items-center mb-6">
-        <Link href="/feed" className="text-sm font-medium text-primary hover:underline flex items-center gap-1">
-          ← Back to Feed
+    <div className="max-w-[1440px] mx-auto p-6 md:p-12">
+      <div className="mb-12">
+        <Link href="/feed" className="text-xs font-bold text-primary uppercase tracking-[0.2em] hover:underline flex items-center gap-2">
+          ← Return to Archive
         </Link>
-        <div className="flex gap-2">
-          <span className="tag">{tag}</span>
-          <span className="source uppercase tracking-wider">{source_type}</span>
-        </div>
       </div>
 
-      <section className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100 leading-tight">
-          "{claim}"
-        </h1>
-      </section>
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16">
+        {/* Main Content Area */}
+        <div className="lg:col-span-8">
+          <section className="mb-12">
+            <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 leading-[1.2] tracking-tight">
+              "{claim}"
+            </h1>
+          </section>
 
-      <div className="mb-8 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg border-l-4 border-primary">
-        <p className="text-xs font-bold text-primary dark:text-cyan-400 uppercase tracking-widest mb-1">Root Issue</p>
-        <p className="text-lg font-medium text-gray-800 dark:text-gray-200">{root_issue}</p>
-      </div>
+          <section className="mb-16">
+            <div className="flex items-center gap-4 mb-6">
+              <div className="h-px bg-gray-200 dark:bg-gray-800 flex-grow"></div>
+              <h2 className="text-xs font-bold text-muted uppercase tracking-[0.3em] whitespace-nowrap">Technical Analysis</h2>
+              <div className="h-px bg-gray-200 dark:bg-gray-800 flex-grow"></div>
+            </div>
+            <div className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed space-y-6">
+              <p className="whitespace-pre-wrap">{analysis}</p>
+            </div>
+          </section>
 
-      <section className="mb-10 text-gray-700 dark:text-gray-300 leading-relaxed">
-        <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-gray-100">Analysis</h2>
-        <p className="whitespace-pre-wrap">{analysis}</p>
-      </section>
-
-      <section className="mb-10 p-6 rounded-xl border border-highlight/30" style={{ backgroundColor: 'rgba(242, 201, 76, 0.05)' }}>
-        <h2 className="text-xl font-bold mb-3" style={{ color: 'var(--color-highlight)' }}>Biblical Response</h2>
-        <p className="text-gray-800 dark:text-gray-200 leading-relaxed italic border-l-2 border-highlight pl-4">
-          {biblical_response}
-        </p>
-      </section>
-
-      <div className="pt-6 border-t border-gray-100 dark:border-gray-700 flex flex-wrap gap-4 items-center justify-between">
-        <ShareButton />
-        <div className="flex gap-4">
-           {/* Future: Copy Link / Open Full placeholders */}
+          <section className="p-8 md:p-12 bg-white dark:bg-gray-900 border-[1px] border-highlight shadow-[8px_8px_0px_0px_rgba(242,201,76,1)] dark:shadow-[8px_8px_0px_0px_rgba(242,201,76,0.5)]">
+            <h2 className="text-xs font-extrabold mb-6 uppercase tracking-[0.4em]" style={{ color: 'var(--color-highlight)' }}>
+              Biblical Foundation
+            </h2>
+            <p className="text-xl md:text-2xl font-bold text-gray-900 dark:text-gray-100 italic leading-relaxed">
+              {biblical_response}
+            </p>
+          </section>
         </div>
+
+        {/* Sidebar Metadata */}
+        <aside className="lg:col-span-4 space-y-12">
+          <div className="p-8 bg-primary text-white rounded-[2px]">
+            <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest mb-2">Primary Diagnosis</p>
+            <h3 className="text-2xl font-bold leading-tight">{root_issue}</h3>
+          </div>
+
+          <div className="space-y-8 border-l border-gray-100 dark:border-gray-800 pl-8">
+            <div>
+              <p className="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Domain</p>
+              <span className="badge-system">{tag}</span>
+            </div>
+            <div>
+              <p className="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Original Source</p>
+              <div className="flex flex-col gap-1">
+                <span className="text-sm font-bold text-gray-900 dark:text-gray-100 uppercase tracking-wide">{source_type}</span>
+                <a href={source_url} target="_blank" rel="noopener noreferrer" className="text-xs text-primary dark:text-cyan-400 hover:underline break-all uppercase">
+                  View Source Connection ↗
+                </a>
+              </div>
+            </div>
+            <div className="pt-8">
+              <ShareButton />
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   );

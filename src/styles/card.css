@@ -1,49 +1,70 @@
 /* src/styles/card.css */
-.card {
+.card-system {
   background: var(--color-card-bg);
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 14px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  backdrop-filter: blur(4px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+.card-system:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 24px -10px rgba(11, 60, 93, 0.1);
+  transform: translateY(-2px);
 }
 
-.tag {
+.badge-system {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  padding: 4px 10px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--color-primary);
+  color: white;
+  border-radius: var(--radius-sm);
 }
 
-.source {
-  font-size: 0.75rem;
+.source-system {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
   color: var(--color-muted);
-  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-.claim {
-  font-weight: 600;
-  margin: 8px 0;
+.claim-system {
+  font-size: 1.125rem;
+  font-weight: 700;
+  line-height: 1.5;
   color: var(--color-text);
+  margin: 0;
 }
 
-.root {
-  font-size: 0.85rem;
-  color: var(--color-muted);
-  font-style: italic;
-}
-
-.cta {
+.root-system {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--color-primary);
+  font-style: italic;
+  margin: 0;
+}
+
+.cta-system {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
   cursor: pointer;
-  font-weight: 500;
-  margin-top: 8px;
+}
+
+.cta-system:hover {
+  color: var(--color-secondary);
 }
