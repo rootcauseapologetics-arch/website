@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import './card.css';
+import '@/styles/card.css';
 
 interface RCAProps {
   id: string;
