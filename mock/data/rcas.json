@@ -1,0 +1,57 @@
+[
+  {
+    "id": "1",
+    "source_type": "x",
+    "source_url": "https://twitter.com/example/status/1",
+    "tag": "hinduism",
+    "claim": "Claim example one that is concise.",
+    "root_issue": "Root issue one",
+    "analysis": "Analysis of claim one.",
+    "biblical_response": "Biblical response one.",
+    "created_at": "2026-01-01T00:00:00Z"
+  },
+  {
+    "id": "2",
+    "source_type": "facebook",
+    "source_url": "https://facebook.com/example/post/2",
+    "tag": "atheism",
+    "claim": "Claim example two with a bit longer text to demonstrate truncation.",
+    "root_issue": "Root issue two",
+    "analysis": "Analysis of claim two.",
+    "biblical_response": "Biblical response two.",
+    "created_at": "2026-01-02T00:00:00Z"
+  },
+  {
+    "id": "3",
+    "source_type": "article",
+    "source_url": "https://example.com/article/3",
+    "tag": "culture",
+    "claim": "Claim example three.",
+    "root_issue": "Root issue three",
+    "analysis": "Analysis of claim three.",
+    "biblical_response": "Biblical response three.",
+    "created_at": "2026-01-03T00:00:00Z"
+  },
+  {
+    "id": "4",
+    "source_type": "x",
+    "source_url": "https://twitter.com/example/status/4",
+    "tag": "hinduism",
+    "claim": "Claim example four.",
+    "root_issue": "Root issue four",
+    "analysis": "Analysis of claim four.",
+    "biblical_response": "Biblical response four.",
+    "created_at": "2026-01-04T00:00:00Z"
+  },
+  {
+    "id": "5",
+    "source_type": "article",
+    "source_url": "https://example.com/article/5",
+    "tag": "atheism",
+    "claim": "Claim example five.",
+    "root_issue": "Root issue five",
+    "analysis": "Analysis of claim five.",
+    "biblical_response": "Biblical response five.",
+    "created_at": "2026-01-05T00:00:00Z"
+  }
+]

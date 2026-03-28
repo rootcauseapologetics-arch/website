@@ -1,0 +1,35 @@
+[
+  {
+    "id": "1",
+    "source_type": "x",
+    "source_url": "https://twitter.com/user/status/123",
+    "tag": "hinduism",
+    "claim": "The Vedas contain all modem scientific discoveries, including quantum mechanics and relativity.",
+    "root_issue": "Historical Revisionism",
+    "analysis": "This claim often stems from a desire to validate ancient scriptures using modern scientific frameworks. While the Vedas contain profound philosophical and early scientific observations, specific modern discoveries like quantum mechanics are distinct products of the scientific method and recent history. Equating the two often requires stretching metaphors beyond their original context.",
+    "biblical_response": "The Bible teaches that while God's glory is revealed in creation, His Word is the ultimate source of spiritual truth. Colossians 2:8 warns us not to be taken captive by 'hollow and deceptive philosophy, which depends on human tradition and the elemental spiritual forces of this world rather than on Christ.'",
+    "created_at": "2026-03-28T12:00:00Z"
+  },
+  {
+    "id": "2",
+    "source_type": "article",
+    "source_url": "https://example.com/blog/atheism-proof",
+    "tag": "atheism",
+    "claim": "Belief in God is a psychological crutch for people who cannot face the reality of death.",
+    "root_issue": "Reductionism",
+    "analysis": "This argument reduces complex religious belief to a single psychological motive. While faith can certainly provide comfort, it is also supported by historical evidence (the life and resurrection of Jesus), philosophical arguments (the cosmological and teleological arguments), and personal experience that goes beyond mere wishful thinking.",
+    "biblical_response": "The Bible acknowledges that death is an enemy, but faith is not a 'crutch'—it is the 'assurance of things hoped for, the conviction of things not seen' (Hebrews 11:1). Christ's resurrection provides a real, historical hope that transcends psychological comfort.",
+    "created_at": "2026-03-28T12:05:00Z"
+  },
+  {
+    "id": "3",
+    "source_type": "facebook",
+    "source_url": "https://facebook.com/post/456",
+    "tag": "cultural",
+    "claim": "All religions lead to the same God; they are just different paths up the same mountain.",
+    "root_issue": "Pluralism",
+    "analysis": "Pluralism ignores the fundamental and often contradictory core claims of different religions. For instance, the identity of Jesus (God incarnate vs. a prophet vs. a man) cannot be simultaneously true in the way different religions claim.",
+    "biblical_response": "Jesus' statement in John 14:6 is clear: 'I am the way and the truth and the life. No one comes to the Father except through me.' The Gospel is uniquely centered on God reaching down to man, rather than man climbing a mountain to reach God.",
+    "created_at": "2026-03-28T12:10:00Z"
+  }
+]

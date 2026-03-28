@@ -1,0 +1,25 @@
+/* src/styles/responsive.css */
+/* Desktop (3 columns) */
+@media (min-width: 1024px) {
+  .grid-feed {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+/* Tablet (2 columns) */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .grid-feed {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+/* Mobile (1 column) */
+@media (max-width: 639px) {
+  .grid-feed {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+}
