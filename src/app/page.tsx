@@ -12,32 +12,55 @@ export default function Home() {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-950 font-sans">
-      {/* Dashboard Header */}
-      <section className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 py-16 px-6">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            <div className="max-w-3xl">
-              <h1 className="text-sm font-bold tracking-[0.2em] text-secondary uppercase mb-4">
-                Research Archive
-              </h1>
-              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-6 tracking-tight">
-                Structured Analysis for <br />
-                <span className="text-primary italic">Religious Polemics</span>
-              </h2>
-              <p className="text-lg text-muted max-w-2xl leading-relaxed">
-                A professional repository dedicated to decomposing surface-level claims 
-                into their philosophical roots and biblical foundations.
-              </p>
+    <div className="flex flex-col min-h-screen font-sans">
+      {/* 1. Powerful Authority Hero */}
+      <section className="bg-authority-gradient relative overflow-hidden py-32 md:py-48 px-6 border-b border-primary/20">
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none"></div>
+        <div className="max-w-[1440px] mx-auto relative z-10 text-center lg:text-left">
+          <div className="max-w-4xl">
+            <h1 className="text-[10px] md:text-xs font-black tracking-[0.5em] text-secondary uppercase mb-8 ml-1">
+              Analytical Repository
+            </h1>
+            <h2 className="text-5xl md:text-7xl font-black text-white leading-[1.05] tracking-tighter mb-10">
+              Decoding the Roots of <br />
+              <span className="italic font-normal text-cyan-200">Cultural Narratives</span>
+            </h2>
+            <p className="text-xl md:text-2xl text-cyan-50/60 max-w-2xl leading-relaxed mb-12 font-medium">
+              We decompose surface-level claims into their philosophical roots 
+              and biblical foundations using structured Root Cause Analysis.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6 items-center lg:items-start">
+              <Link 
+                href="/feed" 
+                className="bg-white/10 backdrop-blur-md border border-white/20 text-white px-12 py-5 font-bold uppercase tracking-[0.2em] hover:bg-cyan-400 hover:text-primary transition-all duration-300"
+              >
+                Explore RCA Index
+              </Link>
+              <div className="flex items-center gap-2 text-[10px] font-bold text-cyan-200/40 uppercase tracking-widest">
+                <span className="w-8 h-px bg-cyan-200/20"></span>
+                <span>Structured Apologetics Platform</span>
+              </div>
             </div>
-            <div className="flex gap-6 border-l border-gray-200 dark:border-gray-800 pl-8">
+          </div>
+        </div>
+      </section>
+
+      {/* 2. Repository Stats (Moved Below) */}
+      <section className="bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 py-10 px-6">
+        <div className="max-w-[1440px] mx-auto">
+          <div className="flex flex-wrap justify-between items-center gap-10">
+            <div className="flex gap-12">
               {stats.map((stat) => (
                 <div key={stat.label}>
-                  <p className="text-xs font-bold text-muted uppercase tracking-widest mb-1">{stat.label}</p>
-                  <p className="text-3xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</p>
+                  <p className="text-[10px] font-bold text-muted uppercase tracking-widest mb-1">{stat.label}</p>
+                  <p className="text-3xl font-black text-gray-900 dark:text-gray-100 tabular-nums">{stat.value}</p>
                 </div>
               ))}
             </div>
+            <div className="hidden lg:block h-12 w-px bg-gray-100 dark:bg-gray-800"></div>
+            <p className="max-w-xs text-xs font-bold text-muted/60 leading-relaxed uppercase tracking-wide">
+              All entries are verified through 3-stage peer analysis and biblical cross-referencing.
+            </p>
           </div>
         </div>
       </section>

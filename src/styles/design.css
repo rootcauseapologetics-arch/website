@@ -15,6 +15,15 @@
   --max-width: 1200px;
 }
 
+.bg-authority-gradient {
+  background: linear-gradient(135deg, #0B3C5D 0%, #082C44 50%, #041A28 100%);
+}
+
+.bg-grid {
+  background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
 html {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
