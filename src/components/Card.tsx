@@ -14,22 +14,23 @@ interface RCAProps {
 const Card = ({ id, source_type, source_url, tag, claim, root_issue }: RCAProps) => {
   const truncatedClaim = claim.length > 120 ? claim.slice(0, 117) + '...' : claim;
   return (
-    <div className="card-system group">
-      <div className="flex justify-between items-start mb-6">
-        <span className="badge-system">{tag}</span>
-        <span className="source-system">{source_type}</span>
+    <div className="card-beautiful group">
+      <div className="flex justify-between items-start mb-4">
+        <span className="pill-tag">{tag}</span>
+        <span className="source-beautiful">{source_type}</span>
       </div>
       <div className="flex-grow">
-        <p className="claim-system">"{truncatedClaim}"</p>
+        <h3 className="claim-beautiful">
+          {truncatedClaim}
+        </h3>
       </div>
-      <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-800">
-        <div className="flex flex-col gap-1 mb-6">
-          <span className="text-[10px] font-bold text-muted uppercase tracking-widest">Root Analysis</span>
-          <p className="root-system">{root_issue}</p>
+      <div className="mt-4 pt-4 border-t border-gray-100 dark:border-gray-800 flex justify-between items-end">
+        <div className="flex flex-col gap-0.5">
+          <span className="text-[10px] font-bold text-muted uppercase tracking-widest opacity-50">Root Cause</span>
+          <p className="root-beautiful">{root_issue}</p>
         </div>
-        <Link href={`/rca/${id}`} className="cta-system">
-          <span>Explore Analysis</span>
-          <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+        <Link href={`/rca/${id}`} className="cta-beautiful">
+          → View RCA
         </Link>
       </div>
     </div>

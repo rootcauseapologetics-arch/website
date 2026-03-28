@@ -1,70 +1,68 @@
 /* src/styles/card.css */
-.card-system {
+.card-beautiful {
   background: var(--color-card-bg);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  padding: 32px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.card-system:hover {
+.card-beautiful:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
   border-color: var(--color-primary);
-  box-shadow: 0 12px 24px -10px rgba(11, 60, 93, 0.1);
-  transform: translateY(-2px);
 }
 
-.badge-system {
+.pill-tag {
   display: inline-block;
-  padding: 4px 10px;
-  font-family: var(--font-mono);
-  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+  font-size: 11px;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  background: var(--color-primary);
-  color: white;
-  border-radius: var(--radius-sm);
+  letter-spacing: 0.05em;
 }
 
-.source-system {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
+.source-beautiful {
+  font-size: 11px;
   color: var(--color-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  text-transform: capitalize;
 }
 
-.claim-system {
+.claim-beautiful {
   font-size: 1.125rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.4;
   color: var(--color-text);
-  margin: 0;
+  margin-top: 12px;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-.root-system {
-  font-size: 0.9rem;
+.root-beautiful {
+  font-size: 13px;
   font-weight: 600;
-  color: var(--color-primary);
-  font-style: italic;
+  color: var(--color-muted);
   margin: 0;
 }
 
-.cta-system {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 800;
+.cta-beautiful {
+  font-size: 12px;
+  font-weight: 700;
   color: var(--color-primary);
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s ease;
 }
 
-.cta-system:hover {
+.cta-beautiful:hover {
   color: var(--color-secondary);
+  text-decoration: underline;
 }

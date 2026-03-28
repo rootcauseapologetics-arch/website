@@ -54,7 +54,7 @@ const Detail = ({ claim, root_issue, analysis, biblical_response, tag, source_ty
 
         {/* Sidebar Metadata */}
         <aside className="lg:col-span-4 space-y-12">
-          <div className="p-8 bg-primary text-white rounded-[2px]">
+          <div className="p-8 bg-primary text-white rounded-[12px]">
             <p className="text-[10px] font-bold opacity-60 uppercase tracking-widest mb-2">Primary Diagnosis</p>
             <h3 className="text-2xl font-bold leading-tight">{root_issue}</h3>
           </div>
@@ -62,7 +62,7 @@ const Detail = ({ claim, root_issue, analysis, biblical_response, tag, source_ty
           <div className="space-y-8 border-l border-gray-100 dark:border-gray-800 pl-8">
             <div>
               <p className="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Domain</p>
-              <span className="badge-system">{tag}</span>
+              <span className="pill-tag">{tag}</span>
             </div>
             <div>
               <p className="text-[10px] font-bold text-muted uppercase tracking-widest mb-2">Original Source</p>
