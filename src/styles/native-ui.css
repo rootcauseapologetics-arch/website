@@ -1,0 +1,44 @@
+/* Native-feel CSS utilities */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
+}
+
+.safe-top {
+  padding-top: env(safe-area-inset-top, 16px);
+}
+
+/* Horizontal pill chip scroll bar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Tap feedback */
+.tap-active:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease-out;
+}
+
+/* Gradient accents */
+.hero-glow {
+  background: radial-gradient(circle at 80% 50%, rgba(0, 180, 255, 0.18) 0%, rgba(7, 30, 45, 0) 70%);
+}
+
+.subtle-badge {
+  background-color: rgba(0, 180, 255, 0.12);
+  color: #00B4FF;
+  border: 1px solid rgba(0, 180, 255, 0.3);
+}
+
+.tag-badge {
+  background-color: #0A243A;
+  color: #88CCD9;
+  border: 1px solid #143B5C;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 500;
+}
