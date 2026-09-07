@@ -1,181 +1,183 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
-import { SubmitIncidentModal } from '@/components/community/SubmitIncidentModal';
-import { SubmitRCAModal } from '@/components/community/SubmitRCAModal';
+import Navbar from '@/components/navigation/Navbar';
+import MobileBottomNav from '@/components/navigation/MobileBottomNav';
 
 export default function OthersPage() {
-  const [isIncidentModalOpen, setIsIncidentModalOpen] = useState(false);
-  const [isRCAModalOpen, setIsRCAModalOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<'rca' | 'incident' | null>(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const frameworkSteps = [
     {
       num: '01',
-      title: 'The Incident / Claim',
-      desc: 'Observing a specific worldview polemic, viral debate, or persecution incident in public square discourse.',
-      tag: 'Observation'
+      title: 'Analyze Skeptical Claim',
+      desc: 'Deconstruct cultural and philosophical assertions down to their fundamental assumptions.',
+      tag: 'Deconstruction',
     },
     {
       num: '02',
-      title: 'Surface Logic & Symptoms',
-      desc: 'Mapping the rhetoric, emotional triggers, and outward assertions without getting distracted by superficial noise.',
-      tag: 'Deconstruction'
+      title: 'Trace The 5 Whys',
+      desc: 'Probe successive causal layers to uncover the latent presuppositions and worldviews.',
+      tag: 'Root Cause',
     },
     {
       num: '03',
-      title: 'The 5-Whys Root Cause',
-      desc: 'Drilling down 5 levels into the fundamental philosophical, spiritual, and socio-political presuppositions.',
-      tag: 'Core Diagnosis'
+      title: 'Presuppositional Critique',
+      desc: 'Expose the internal incoherence and moral bankruptcy of autonomous secular frameworks.',
+      tag: 'Internal Critique',
     },
     {
       num: '04',
-      title: 'The Biblical Resolution',
-      desc: 'Presenting the coherent Christian worldview, legal defense, and gospel truth as the unshakeable foundation.',
-      tag: 'Grounded Truth'
-    }
+      title: 'Biblical Revelation & Gospel',
+      desc: 'Establish God’s revealed truth in Christ as the only necessary ground for reason, morality, and hope.',
+      tag: 'Gospel Climax',
+    },
   ];
 
   return (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-8 md:py-14">
-      {/* Header */}
-      <div className="max-w-3xl mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-cyan-400 text-[10px] font-black uppercase tracking-widest mb-3">
-          <span>Community & Knowledge Hub</span>
-        </div>
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white mb-4">
-          About RCA & Public Ingestion
-        </h1>
-        <p className="text-sm sm:text-base text-muted dark:text-slate-300 leading-relaxed">
-          Root Cause Apologetics is an active investigative platform testing the foundations of modern thought in India. We equip the church with rigorous truth analysis and provide rapid response for persecuted communities.
-        </p>
-      </div>
+    <div className="min-h-screen bg-[#071E2D] text-white flex flex-col pb-20 md:pb-12">
+      <Navbar />
 
-      {/* Dual Intake Action Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-        {/* Submit Incident Card */}
-        <div className="p-8 rounded-2xl bg-gradient-to-br from-red-50 to-red-100/40 dark:from-red-950/40 dark:to-slate-900 border border-red-200 dark:border-red-900/60 shadow-lg flex flex-col justify-between">
-          <div>
-            <div className="w-12 h-12 rounded-xl bg-red-600 text-white text-xl flex items-center justify-center mb-4 shadow-md">
-              🚨
-            </div>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2">
-              Submit a Persecution Incident
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-              Witnessed or experienced a church disruption, anti-conversion harassment, or community boycott? Submit verified details for legal coordination, intercession, and 5-Whys analysis.
-            </p>
-          </div>
-          <button
-            onClick={() => setIsIncidentModalOpen(true)}
-            className="w-full py-3.5 rounded-xl bg-red-600 hover:bg-red-700 text-white text-xs font-black uppercase tracking-wider shadow-md transition-all active:scale-95"
-          >
-            Open Incident Submission Form →
-          </button>
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-xs text-[#88CCD9]/70 pt-2">
+          <a href="/" className="hover:text-[#00B4FF]">Home</a>
+          <span className="text-[#143B5C]">/</span>
+          <span className="text-white font-medium">Community & Framework</span>
         </div>
 
-        {/* Submit Better RCA Card */}
-        <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50/40 dark:from-slate-900 dark:to-cyan-950/30 border border-primary/20 dark:border-cyan-800/40 shadow-lg flex flex-col justify-between">
-          <div>
-            <div className="w-12 h-12 rounded-xl bg-primary text-white text-xl flex items-center justify-center mb-4 shadow-md">
-              💡
-            </div>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-2">
-              Submit a Better RCA Breakdown
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-              Have a deeper 5-Whys diagnosis for an existing claim, or want to submit a new viral polemic for investigation? Contribute your scholarly analysis to our peer review queue.
-            </p>
-          </div>
-          <button
-            onClick={() => setIsRCAModalOpen(true)}
-            className="w-full py-3.5 rounded-xl bg-primary hover:bg-primary/90 text-white text-xs font-black uppercase tracking-wider shadow-md transition-all active:scale-95"
-          >
-            Submit RCA Proposal →
-          </button>
-        </div>
-      </div>
-
-      {/* The 4-Step Investigative Engine Infographic */}
-      <section className="mb-20">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-secondary dark:text-cyan-400 block mb-2">
-            The Analytical Engine
+        {/* Hero Section */}
+        <div className="bg-[#082A44] border border-[#143B5C] rounded-2xl p-6 sm:p-10 space-y-4">
+          <span className="px-3 py-1 bg-[#00B4FF]/10 text-[#00B4FF] border border-[#00B4FF]/30 text-xs font-bold rounded-full uppercase tracking-wider">
+            Methodology & Community
           </span>
-          <h2 className="text-2xl md:text-3xl font-black text-slate-900 dark:text-white tracking-tight">
-            Our 4-Stage Presuppositional Framework
-          </h2>
-          <p className="text-xs text-muted dark:text-slate-400 mt-1">
-            How we systematically unpack worldviews and persecution events
+          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+            The 4-Stage Presuppositional Framework
+          </h1>
+          <p className="text-xs sm:text-sm text-[#88CCD9] max-w-2xl leading-relaxed">
+            Every RCA analysis follows a disciplined 4-stage presuppositional apologetic methodology designed to dismantle autonomous human reasoning and exalt the preeminence of Christ.
           </p>
+
+          <div className="flex items-center gap-3 pt-2 flex-wrap">
+            <button
+              onClick={() => { setActiveModal('rca'); setSubmitted(false); }}
+              className="px-4 py-2 bg-[#00B4FF] text-[#071E2D] hover:bg-[#33C3FF] text-xs font-bold rounded-lg shadow-[0_0_15px_rgba(0,180,255,0.3)] transition-all"
+            >
+              Propose RCA Breakdown
+            </button>
+            <button
+              onClick={() => { setActiveModal('incident'); setSubmitted(false); }}
+              className="px-4 py-2 bg-[#0A243A] hover:bg-[#0E304C] text-[#88CCD9] hover:text-white border border-[#143B5C] text-xs font-bold rounded-lg transition-all"
+            >
+              Report Incident
+            </button>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {frameworkSteps.map(step => (
+        {/* 4-Stage Framework Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {frameworkSteps.map((step) => (
             <div
               key={step.num}
-              className="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 shadow-sm relative overflow-hidden flex flex-col justify-between"
+              className="bg-[#0A243A] border border-[#143B5C] hover:border-[#00B4FF]/60 rounded-xl p-5 space-y-3 transition-all"
             >
-              <div className="absolute top-4 right-4 text-3xl font-black text-slate-100 dark:text-slate-800/80 pointer-events-none">
-                {step.num}
-              </div>
-
-              <div>
-                <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded bg-primary/10 dark:bg-cyan-900/40 text-primary dark:text-cyan-400 inline-block mb-3">
+              <div className="flex items-center justify-between">
+                <span className="text-2xl font-black text-[#00B4FF] font-mono">
+                  {step.num}
+                </span>
+                <span className="text-[10px] uppercase font-bold bg-[#071E2D] px-2 py-0.5 rounded border border-[#143B5C] text-[#88CCD9]">
                   {step.tag}
                 </span>
-                <h4 className="text-base font-bold text-slate-900 dark:text-white mb-2">
-                  {step.title}
-                </h4>
-                <p className="text-xs leading-relaxed text-slate-600 dark:text-slate-300">
-                  {step.desc}
-                </p>
               </div>
-
-              <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800 text-[10px] font-bold text-primary dark:text-cyan-400 uppercase tracking-widest">
-                Stage {step.num}
-              </div>
+              <h3 className="text-sm font-bold text-white leading-snug">
+                {step.title}
+              </h3>
+              <p className="text-xs text-[#88CCD9] leading-relaxed">
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>
-      </section>
 
-      {/* Mission & FAQs */}
-      <section className="p-8 md:p-12 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-lg">
-        <div className="max-w-3xl space-y-8">
-          <div>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-3">
-              Who Can Participate?
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-              Christian scholars, field researchers, legal advocates, pastors, and intellectual seekers are welcome to submit claims, report local incidents, and participate in peer-reviewing RCA case studies.
-            </p>
-          </div>
+        {/* Modal for Submission */}
+        {activeModal && (
+          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
+            <div className="bg-[#0A243A] border border-[#143B5C] rounded-2xl max-w-lg w-full p-6 space-y-4 shadow-2xl relative">
+              <button
+                onClick={() => setActiveModal(null)}
+                className="absolute top-4 right-4 text-[#88CCD9] hover:text-white p-1"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
 
-          <div>
-            <h3 className="text-xl font-black text-slate-900 dark:text-white mb-3">
-              Direct Contact & Verification Desk
-            </h3>
-            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-4">
-              For security, legal emergencies, or confidential church onboarding queries, email us directly:
-            </p>
-            <div className="inline-flex items-center gap-3 p-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-xs font-mono font-bold text-primary dark:text-cyan-400">
-              <span>✉️</span>
-              <span>contact@rootcauseapologetics.com</span>
+              <h2 className="text-lg font-bold text-white">
+                {activeModal === 'rca' ? 'Propose RCA Topic' : 'Submit Persecution Incident'}
+              </h2>
+
+              {submitted ? (
+                <div className="p-6 bg-[#071E2D] rounded-xl border border-[#2ECC71]/40 text-center space-y-2">
+                  <span className="text-2xl">&#10004;</span>
+                  <h3 className="text-sm font-bold text-white">Submission Received</h3>
+                  <p className="text-xs text-[#88CCD9]">Thank you for contributing to the RCA network. Our editorial team will review your report.</p>
+                  <button
+                    onClick={() => setActiveModal(null)}
+                    className="mt-3 px-4 py-1.5 bg-[#00B4FF] text-[#071E2D] text-xs font-bold rounded-lg"
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setSubmitted(true);
+                  }}
+                  className="space-y-3 text-xs"
+                >
+                  <div>
+                    <label className="block text-[#88CCD9] mb-1 font-semibold">Title / Subject</label>
+                    <input
+                      required
+                      type="text"
+                      placeholder="e.g. Analysis of Moral Relativism in Higher Education"
+                      className="w-full px-3 py-2 bg-[#071E2D] border border-[#143B5C] rounded-lg text-white placeholder-[#88CCD9]/50 focus:outline-none focus:border-[#00B4FF]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[#88CCD9] mb-1 font-semibold">Details & Sources</label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Provide background context, skeptical claim, or incident details..."
+                      className="w-full px-3 py-2 bg-[#071E2D] border border-[#143B5C] rounded-lg text-white placeholder-[#88CCD9]/50 focus:outline-none focus:border-[#00B4FF]"
+                    />
+                  </div>
+                  <div className="flex justify-end gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={() => setActiveModal(null)}
+                      className="px-4 py-2 bg-[#071E2D] text-[#88CCD9] rounded-lg border border-[#143B5C]"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      className="px-4 py-2 bg-[#00B4FF] text-[#071E2D] font-bold rounded-lg hover:bg-[#33C3FF]"
+                    >
+                      Submit for Review
+                    </button>
+                  </div>
+                </form>
+              )}
             </div>
           </div>
-        </div>
-      </section>
+        )}
+      </main>
 
-      <SubmitIncidentModal
-        isOpen={isIncidentModalOpen}
-        onClose={() => setIsIncidentModalOpen(false)}
-      />
-
-      <SubmitRCAModal
-        isOpen={isRCAModalOpen}
-        onClose={() => setIsRCAModalOpen(false)}
-      />
+      <MobileBottomNav />
     </div>
   );
 }

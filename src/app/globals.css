@@ -1,27 +1,85 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0B3C5D;
-  --color-primary-dark: #041A28;
-  --color-secondary: #00B7C4;
-  --color-highlight: #F2C94C;
-  --color-muted: #64748B;
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --color-primary-navy: #071E2D;
+  --color-secondary-navy: #082A44;
+  --color-card-navy: #0A243A;
+  --color-card-hover: #0E304C;
+  --color-border-subtle: #143B5C;
+  --color-accent-blue: #00B4FF;
+  --color-accent-blue-hover: #33C3FF;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #88CCD9;
+  --color-text-muted: #5D8C9B;
+  --color-status-high: #E74C3C;
+  --color-status-med: #F39C12;
+  --color-status-low: #2ECC71;
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #0f172a;
-}
-
-.dark {
-  --background: #041A28;
-  --foreground: #f8fafc;
+  --bg-primary: #071E2D;
+  --bg-secondary: #082A44;
+  --bg-card: #0A243A;
+  --border-subtle: #143B5C;
+  --accent-cyan: #00B4FF;
+  --text-primary: #FFFFFF;
+  --text-secondary: #88CCD9;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans);
+  background-color: #071E2D;
+  color: #FFFFFF;
+  font-family: var(--font-inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif);
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #071E2D;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #143B5C;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00B4FF;
+}
+
+/* Glass & Card Glow utilities */
+.card-navy {
+  background-color: #0A243A;
+  border: 1px solid #143B5C;
+  border-radius: 0.75rem;
+}
+
+.card-navy-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-navy-hover:hover {
+  border-color: #00B4FF;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(0, 180, 255, 0.15);
+}
+
+.btn-accent {
+  background-color: #00B4FF;
+  color: #071E2D;
+  font-weight: 600;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-accent:hover {
+  background-color: #33C3FF;
+  box-shadow: 0 0 16px rgba(0, 180, 255, 0.4);
 }

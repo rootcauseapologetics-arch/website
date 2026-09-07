@@ -1,10 +1,13 @@
-/* Prevent horizontal overflow on mobile viewports */
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
+/* Native-feel CSS utilities */
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 16px);
 }
 
-/* Hide scrollbar for clean horizontal chip bars */
+.safe-top {
+  padding-top: env(safe-area-inset-top, 16px);
+}
+
+/* Horizontal pill chip scroll bar */
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
@@ -13,37 +16,29 @@ html, body {
   scrollbar-width: none;
 }
 
-/* Native Tap Highlight & Fluid Feedback */
-* {
-  -webkit-tap-highlight-color: transparent;
+/* Tap feedback */
+.tap-active:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease-out;
 }
 
-button:active, a:active {
-  transform: scale(0.98);
+/* Gradient accents */
+.hero-glow {
+  background: radial-gradient(circle at 80% 50%, rgba(0, 180, 255, 0.18) 0%, rgba(7, 30, 45, 0) 70%);
 }
 
-/* Safe Area Insets for Modern Mobile Browsers */
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  nav[aria-label="Bottom Navigation"] {
-    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
-  }
-  main {
-    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
-  }
+.subtle-badge {
+  background-color: rgba(0, 180, 255, 0.12);
+  color: #00B4FF;
+  border: 1px solid rgba(0, 180, 255, 0.3);
 }
 
-/* Smooth Native Animation Keyframes */
-@keyframes fadeInSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-up {
-  animation: fadeInSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.tag-badge {
+  background-color: #0A243A;
+  color: #88CCD9;
+  border: 1px solid #143B5C;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-weight: 500;
 }
