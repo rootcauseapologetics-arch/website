@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import Navbar from '@/components/navigation/Navbar';
 import MobileBottomNav from '@/components/navigation/MobileBottomNav';
+import Footer from '@/components/navigation/Footer';
 import UniversalCard, { CardData } from '@/components/templates/UniversalCard';
 import FilterSidebar, { FilterGroup } from '@/components/templates/FilterSidebar';
 
@@ -61,15 +62,27 @@ export default function ListingPageTemplate({
     });
   };
 
+  const removeFilterTag = (groupId: string, optionId: string) => {
+    setSelectedFilters((prev) => ({
+      ...prev,
+      [groupId]: (prev[groupId] || []).filter((id) => id !== optionId),
+    }));
+  };
+
   const handleResetFilters = () => {
     setSelectedFilters({});
     setSelectedPill('all');
     setSearchQuery('');
   };
 
+  // Active filter count for mobile badge
+  const totalActiveFilters = useMemo(() => {
+    return Object.values(selectedFilters).reduce((acc, curr) => acc + curr.length, 0);
+  }, [selectedFilters]);
+
   // Filter items based on search, category pill, and sidebar filters
   const filteredItems = useMemo(() => {
-    return items.filter((item) => {
+    let result = items.filter((item) => {
       // Search query filter
       if (searchQuery.trim()) {
         const q = searchQuery.toLowerCase();
@@ -118,13 +131,22 @@ export default function ListingPageTemplate({
 
       return true;
     });
-  }, [items, searchQuery, selectedPill, selectedFilters]);
+
+    // Sorting
+    if (sortBy === 'oldest') {
+      result = [...result].reverse();
+    } else if (sortBy === 'title') {
+      result = [...result].sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    return result;
+  }, [items, searchQuery, selectedPill, selectedFilters, sortBy]);
 
   return (
-    <div className="min-h-screen bg-[#071E2D] text-white flex flex-col pb-20 md:pb-12">
+    <div className="min-h-screen bg-[#071E2D] text-white flex flex-col">
       <Navbar />
 
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8 pb-20 md:pb-16">
         {/* Optional Hero Banner */}
         {hero ? (
           <div className="relative rounded-2xl bg-gradient-to-r from-[#082A44] via-[#0A2E4C] to-[#071E2D] border border-[#143B5C] p-6 sm:p-10 overflow-hidden shadow-xl">
@@ -203,7 +225,7 @@ export default function ListingPageTemplate({
 
         {/* Category Pills & Controls Bar */}
         <div className="space-y-4">
-          {/* Mobile Search */}
+          {/* Mobile Search Input */}
           <div className="sm:hidden relative w-full">
             <svg className="w-4 h-4 text-[#88CCD9] absolute left-3.5 top-3 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -275,32 +297,90 @@ export default function ListingPageTemplate({
                 </button>
               </div>
 
-              {/* Mobile Filter Toggle */}
+              {/* Mobile Filter Button */}
               {showSidebar && filterGroups.length > 0 && (
                 <button
-                  onClick={() => setMobileFilterOpen(!mobileFilterOpen)}
-                  className="lg:hidden p-1.5 bg-[#0A243A] border border-[#143B5C] rounded-lg text-[#88CCD9] hover:text-white"
+                  onClick={() => setMobileFilterOpen(true)}
+                  className="lg:hidden px-3 py-1.5 bg-[#082A44] border border-[#00B4FF]/40 rounded-lg text-xs font-bold text-[#00B4FF] flex items-center gap-1.5"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
                   </svg>
+                  <span>Filter {totalActiveFilters > 0 ? `(${totalActiveFilters})` : ''}</span>
                 </button>
               )}
             </div>
           </div>
 
-          {/* Mobile Filter Drawer */}
-          {mobileFilterOpen && showSidebar && filterGroups.length > 0 && (
-            <div className="lg:hidden">
-              <FilterSidebar
-                groups={filterGroups}
-                selectedFilters={selectedFilters}
-                onFilterChange={handleFilterChange}
-                onReset={handleResetFilters}
-              />
+          {/* Active Filter Chips Row */}
+          {totalActiveFilters > 0 && (
+            <div className="flex items-center gap-2 flex-wrap pt-2">
+              <span className="text-xs text-[#88CCD9] font-medium">Active Filters:</span>
+              {Object.entries(selectedFilters).map(([groupId, optIds]) =>
+                optIds.map((optId) => (
+                  <button
+                    key={`${groupId}-${optId}`}
+                    onClick={() => removeFilterTag(groupId, optId)}
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#082A44] border border-[#00B4FF]/40 text-[#00B4FF] text-xs font-semibold hover:bg-[#E74C3C]/20 hover:text-[#E74C3C] hover:border-[#E74C3C]/40 transition-all"
+                  >
+                    <span>{optId}</span>
+                    <span>&times;</span>
+                  </button>
+                ))
+              )}
+              <button
+                onClick={handleResetFilters}
+                className="text-xs text-[#88CCD9] hover:text-white underline ml-2"
+              >
+                Clear all
+              </button>
             </div>
           )}
         </div>
+
+        {/* Mobile Filter Slide-over Modal */}
+        {mobileFilterOpen && showSidebar && filterGroups.length > 0 && (
+          <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex justify-end">
+            <div className="w-full max-w-xs bg-[#0A243A] h-full p-6 flex flex-col justify-between overflow-y-auto border-l border-[#143B5C]">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between border-b border-[#143B5C] pb-4">
+                  <h3 className="text-base font-bold text-white uppercase">Filters</h3>
+                  <button
+                    onClick={() => setMobileFilterOpen(false)}
+                    className="p-1 text-[#88CCD9] hover:text-white"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <FilterSidebar
+                  groups={filterGroups}
+                  selectedFilters={selectedFilters}
+                  onFilterChange={handleFilterChange}
+                  onReset={handleResetFilters}
+                  className="bg-transparent border-0 p-0"
+                />
+              </div>
+
+              <div className="pt-6 border-t border-[#143B5C] flex gap-3">
+                <button
+                  onClick={handleResetFilters}
+                  className="flex-1 py-2.5 bg-[#071E2D] border border-[#143B5C] text-xs font-semibold text-[#88CCD9] rounded-lg"
+                >
+                  Reset
+                </button>
+                <button
+                  onClick={() => setMobileFilterOpen(false)}
+                  className="flex-1 py-2.5 bg-[#00B4FF] text-[#071E2D] text-xs font-bold rounded-lg shadow-md"
+                >
+                  Apply Filters
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Main Content Layout (Sidebar + Card Grid) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
@@ -319,12 +399,19 @@ export default function ListingPageTemplate({
           {/* Right Cards Area */}
           <div className={showSidebar && filterGroups.length > 0 ? 'lg:col-span-9' : 'lg:col-span-12'}>
             {filteredItems.length === 0 ? (
-              <div className="bg-[#0A243A] border border-[#143B5C] rounded-xl p-12 text-center space-y-3">
-                <p className="text-base text-white font-semibold">No results match your criteria.</p>
-                <p className="text-xs text-[#88CCD9]">Try clearing filters or search terms.</p>
+              <div className="bg-[#0A243A] border border-[#143B5C] rounded-2xl p-12 text-center space-y-3">
+                <div className="w-12 h-12 rounded-full bg-[#082A44] border border-[#143B5C] mx-auto flex items-center justify-center text-[#88CCD9]">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h3 className="text-base text-white font-bold">No results found</h3>
+                <p className="text-xs text-[#88CCD9] max-w-sm mx-auto">
+                  No items matched your active search or filter criteria. Try removing a filter.
+                </p>
                 <button
                   onClick={handleResetFilters}
-                  className="px-4 py-2 bg-[#00B4FF] text-[#071E2D] text-xs font-bold rounded-lg hover:bg-[#33C3FF]"
+                  className="px-4 py-2 bg-[#00B4FF] text-[#071E2D] text-xs font-bold rounded-lg hover:bg-[#33C3FF] shadow-md"
                 >
                   Clear All Filters
                 </button>
@@ -383,6 +470,7 @@ export default function ListingPageTemplate({
         </div>
       </main>
 
+      <Footer />
       <MobileBottomNav />
     </div>
   );

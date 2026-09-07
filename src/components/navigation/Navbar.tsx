@@ -2,24 +2,32 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const navLinks = [
-    { name: 'RCA', href: '/' },
-    { name: 'Persecution Incidents', href: '/incidents' },
-    { name: 'Church Zone', href: '/churches' },
-    { name: 'Others', href: '/others' },
+    { name: 'RCA', href: '/rca' },
+    { name: 'Persecution', href: '/incidents' },
+    { name: 'Churches', href: '/churches' },
   ];
 
   const isActive = (href: string) => {
-    if (href === '/' && (pathname === '/' || pathname.startsWith('/rca'))) return true;
-    if (href !== '/' && pathname.startsWith(href)) return true;
+    if (href === '/rca' && (pathname === '/rca' || pathname.startsWith('/rca/'))) return true;
+    if (href !== '/rca' && pathname.startsWith(href)) return true;
     return false;
+  };
+
+  const handleSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      router.push(`/rca?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
   };
 
   return (
@@ -75,12 +83,60 @@ export default function Navbar() {
                 </Link>
               );
             })}
+
+            {/* More Dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                onBlur={() => setTimeout(() => setMoreDropdownOpen(false), 200)}
+                className={`px-3.5 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-1.5 ${
+                  pathname.startsWith('/more') || pathname.startsWith('/about')
+                    ? 'bg-[#082A44] text-[#00B4FF] font-semibold border border-[#00B4FF]/30'
+                    : 'text-[#88CCD9] hover:text-white hover:bg-[#0A243A]'
+                }`}
+              >
+                <span>More</span>
+                <svg className={`w-3.5 h-3.5 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {moreDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-52 bg-[#0A243A] border border-[#143B5C] rounded-xl shadow-2xl p-2 z-50 space-y-1">
+                  <Link
+                    href="/more"
+                    className="block px-3 py-2 text-xs font-semibold text-white hover:bg-[#082A44] hover:text-[#00B4FF] rounded-lg transition-colors"
+                  >
+                    About & Methodology
+                  </Link>
+                  <Link
+                    href="/more?action=submit-rca"
+                    className="block px-3 py-2 text-xs font-semibold text-[#88CCD9] hover:bg-[#082A44] hover:text-white rounded-lg transition-colors"
+                  >
+                    Submit RCA Proposal
+                  </Link>
+                  <Link
+                    href="/more?action=report-incident"
+                    className="block px-3 py-2 text-xs font-semibold text-[#88CCD9] hover:bg-[#082A44] hover:text-white rounded-lg transition-colors"
+                  >
+                    Report Persecution Incident
+                  </Link>
+                  <div className="border-t border-[#143B5C] my-1" />
+                  <a
+                    href="mailto:contact@rootcauseapologetics.com"
+                    className="block px-3 py-2 text-xs text-[#88CCD9]/80 hover:text-[#00B4FF] rounded-lg transition-colors"
+                  >
+                    Contact Editorial Team
+                  </a>
+                </div>
+              )}
+            </div>
           </nav>
 
           {/* Search Bar & User Actions */}
           <div className="flex items-center gap-3 shrink-0">
             {/* Search Input (Desktop) */}
-            <div className="hidden sm:flex items-center relative w-56 lg:w-72">
+            <form onSubmit={handleSearchSubmit} className="hidden sm:flex items-center relative w-56 lg:w-72">
               <svg className="w-4 h-4 text-[#88CCD9] absolute left-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
@@ -94,7 +150,7 @@ export default function Navbar() {
               <span className="absolute right-2 px-1.5 py-0.5 text-[10px] bg-[#071E2D] border border-[#143B5C] rounded text-[#88CCD9] pointer-events-none">
                 Ctrl K
               </span>
-            </div>
+            </form>
 
             {/* Notification Bell */}
             <button className="relative p-2 text-[#88CCD9] hover:text-white hover:bg-[#0A243A] rounded-lg border border-transparent hover:border-[#143B5C] transition-all">
@@ -133,20 +189,42 @@ export default function Navbar() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden py-3 border-t border-[#143B5C] flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className={`px-3 py-2 rounded-lg text-sm font-medium ${
-                  isActive(link.href)
-                    ? 'bg-[#082A44] text-[#00B4FF] font-semibold'
-                    : 'text-[#88CCD9] hover:bg-[#0A243A]'
-                }`}
-              >
-                {link.name}
-              </Link>
-            ))}
+            <Link
+              href="/rca"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium ${
+                pathname.startsWith('/rca') ? 'bg-[#082A44] text-[#00B4FF] font-semibold' : 'text-[#88CCD9]'
+              }`}
+            >
+              RCA Library
+            </Link>
+            <Link
+              href="/incidents"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium ${
+                pathname.startsWith('/incidents') ? 'bg-[#082A44] text-[#00B4FF] font-semibold' : 'text-[#88CCD9]'
+              }`}
+            >
+              Persecution Incidents
+            </Link>
+            <Link
+              href="/churches"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium ${
+                pathname.startsWith('/churches') ? 'bg-[#082A44] text-[#00B4FF] font-semibold' : 'text-[#88CCD9]'
+              }`}
+            >
+              Church Zone
+            </Link>
+            <Link
+              href="/more"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`px-3 py-2 rounded-lg text-sm font-medium ${
+                pathname.startsWith('/more') ? 'bg-[#082A44] text-[#00B4FF] font-semibold' : 'text-[#88CCD9]'
+              }`}
+            >
+              More & Methodology
+            </Link>
           </div>
         )}
       </div>
