@@ -1,0 +1,45 @@
+/* Native Mobile & App-Like Styling Enhancements */
+
+/* Hide scrollbar for clean horizontal chip bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Native Tap Highlight & Fluid Feedback */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active, a:active {
+  transform: scale(0.98);
+}
+
+/* Safe Area Insets for Modern Mobile Browsers */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  nav[aria-label="Bottom Navigation"] {
+    padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  }
+  main {
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom));
+  }
+}
+
+/* Smooth Native Animation Keyframes */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: fadeInSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}

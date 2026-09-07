@@ -1,14 +1,13 @@
-import { getRCAEntryById } from '@/lib/data';
-import Detail from '@/components/Detail';
+import React from 'react';
 import { notFound } from 'next/navigation';
+import { getRCAEntryById, getRelatedRCAEntries } from '@/lib/rca-data';
+import { RCADetailView } from '@/components/rca/RCADetailView';
 
-interface DetailPageProps {
-  params: {
-    id: string;
-  };
+interface PageProps {
+  params: Promise<{ id: string }>;
 }
 
-export default async function RCADetailPage({ params }: DetailPageProps) {
+export default async function RCADetailPage({ params }: PageProps) {
   const { id } = await params;
   const entry = getRCAEntryById(id);
 
@@ -16,9 +15,7 @@ export default async function RCADetailPage({ params }: DetailPageProps) {
     notFound();
   }
 
-  return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen pt-8">
-      <Detail {...entry} />
-    </div>
-  );
+  const related = getRelatedRCAEntries(entry.id);
+
+  return <RCADetailView entry={entry} relatedEntries={related} />;
 }

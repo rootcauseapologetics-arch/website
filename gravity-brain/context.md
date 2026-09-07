@@ -29,7 +29,13 @@ This project uses a dedicated SSH key and identity to isolate it from other proj
 - **Custom Domain**: `rootcauseapologetics.com` (Configured in Vercel & Cloudflare)
 - **DNS**: Managed via Cloudflare
 
+## Architecture & Visual Planning Board
+- **Excalidraw Board**: [RCA Architecture, Screens & Plan](https://excalidraw.com/#json=te6Smg5Ghso6dRDiiVeGj,pb__eXxtrnbQIotIip9E0g)
+  *(Contains visual architecture, screen layouts, user journeys, and master plans)*
+
+
 ## Helpful Commands
 - `npm run dev`: Start local development server.
 - `npm run build`: Build for production.
 - `git push`: Automatically triggers deployment to Vercel.
+
