@@ -1,4 +1,8 @@
-/* Native Mobile & App-Like Styling Enhancements */
+/* Prevent horizontal overflow on mobile viewports */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
 
 /* Hide scrollbar for clean horizontal chip bars */
 .no-scrollbar::-webkit-scrollbar {

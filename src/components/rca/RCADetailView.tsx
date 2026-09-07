@@ -50,45 +50,41 @@ export const RCADetailView: React.FC<RCADetailViewProps> = ({ entry, relatedEntr
       />
 
       {/* Header & Breadcrumb */}
-      <div className="mb-8 flex items-center justify-between">
+      <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <Link 
           href="/" 
           className="text-xs font-bold text-primary dark:text-cyan-400 uppercase tracking-widest hover:underline flex items-center gap-1.5"
         >
           ← Return to RCA Index
         </Link>
-        <div className="flex items-center gap-3">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-muted dark:text-slate-400">
-            {entry.date}
-          </span>
+        <div className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider text-muted dark:text-slate-400">
+          <span>{entry.date}</span>
           <span className="text-slate-300 dark:text-slate-700">•</span>
-          <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest">
-            By {entry.author}
-          </span>
+          <span>By {entry.author}</span>
         </div>
       </div>
 
       {/* 1. The Claim: Large, bold, top focus */}
-      <div className="mb-10">
-        <div className="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-primary/10 dark:bg-cyan-900/30 text-primary dark:text-cyan-400 mb-4 border border-primary/20 dark:border-cyan-500/20">
+      <div className="mb-8 sm:mb-10">
+        <div className="inline-block px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-primary/10 dark:bg-cyan-900/30 text-primary dark:text-cyan-400 mb-3 border border-primary/20 dark:border-cyan-500/20">
           Topic: {entry.topic}
         </div>
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-900 dark:text-white leading-[1.2] tracking-tight">
+        <h1 className="text-xl sm:text-2xl md:text-4xl font-black text-slate-900 dark:text-white leading-[1.25] tracking-tight break-words">
           "{entry.claim}"
         </h1>
       </div>
 
       {/* 2. Core Diagnostic Block: Root Issue */}
-      <div className="mb-10 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-primary to-slate-900 text-white shadow-xl border-l-[10px] border-highlight">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-300">
+      <div className="mb-8 sm:mb-10 p-5 sm:p-8 rounded-2xl bg-gradient-to-br from-primary to-slate-900 text-white shadow-xl border-l-[8px] sm:border-l-[10px] border-highlight overflow-hidden">
+        <div className="flex items-center justify-between mb-2 gap-2">
+          <span className="text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-cyan-300">
             ★ Core Presuppositional Diagnostic
           </span>
-          <span className="text-[9px] font-extrabold uppercase px-2 py-0.5 rounded bg-highlight text-slate-950">
+          <span className="text-[8px] sm:text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-highlight text-slate-950 flex-shrink-0">
             Root Cause
           </span>
         </div>
-        <h2 className="text-xl md:text-2xl font-black tracking-tight text-white leading-snug">
+        <h2 className="text-lg sm:text-xl md:text-2xl font-black tracking-tight text-white leading-snug break-words">
           {entry.root_issue}
         </h2>
       </div>

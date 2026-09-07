@@ -48,60 +48,60 @@ export default function IncidentsPage() {
   return (
     <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-8 md:py-12">
       {/* Top Banner: Alert Header */}
-      <div className="mb-8 p-6 md:p-8 rounded-2xl bg-gradient-to-br from-red-950/80 via-slate-900 to-slate-950 border border-red-500/30 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="mb-6 sm:mb-8 p-5 sm:p-8 rounded-2xl bg-gradient-to-br from-red-950/90 via-slate-900 to-slate-950 border border-red-500/30 text-white shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-6 overflow-hidden">
         <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 text-[10px] font-black uppercase tracking-widest mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/20 text-red-300 border border-red-500/30 text-[10px] font-black uppercase tracking-widest mb-2.5">
             <span className="w-2 h-2 rounded-full bg-red-500 animate-ping" />
             <span>Field Intelligence Cell</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight text-white mb-2">
-            Persecution Incidents & 5-Whys Analysis
+          <h1 className="text-xl sm:text-3xl md:text-4xl font-black tracking-tight text-white mb-2 break-words">
+            Persecution Incidents & Analysis
           </h1>
-          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+          <p className="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed font-normal">
             Documenting, verifying, and root-cause analyzing religious freedom violations across India, paired with strategic legal guidance and intercession networks.
           </p>
         </div>
 
         <button
           onClick={() => setIsSubmitModalOpen(true)}
-          className="px-6 py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-black text-xs uppercase tracking-wider shadow-lg flex items-center gap-2 flex-shrink-0 active:scale-95 transition-all"
+          className="px-5 py-2.5 sm:px-6 sm:py-3 rounded-xl bg-red-600 hover:bg-red-500 text-white font-black text-xs uppercase tracking-wider shadow-lg flex items-center gap-2 flex-shrink-0 active:scale-95 transition-all self-start md:self-auto"
         >
           <span>🚨</span>
-          <span>Submit Incident Report</span>
+          <span>Submit Incident</span>
         </button>
       </div>
 
       {/* Intelligence Metric Counters */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block mb-1">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 sm:mb-8">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
             Verified Reports
           </span>
-          <span className="text-2xl font-black text-slate-900 dark:text-white tabular-nums">
+          <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tabular-nums">
             {stats.verifiedCount}
           </span>
         </div>
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block mb-1">
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
             States Impacted
           </span>
-          <span className="text-2xl font-black text-red-600 dark:text-red-400 tabular-nums">
+          <span className="text-xl sm:text-2xl font-black text-red-600 dark:text-red-400 tabular-nums">
             {stats.statesCount}
           </span>
         </div>
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block mb-1">
-            Intercessors Active
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
+            Intercessors
           </span>
-          <span className="text-2xl font-black text-highlight tabular-nums">
+          <span className="text-xl sm:text-2xl font-black text-highlight tabular-nums">
             {stats.activePrayers.toLocaleString()}
           </span>
         </div>
-        <div className="p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-          <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block mb-1">
-            Legal Aid Pipeline
+        <div className="p-3.5 sm:p-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
+          <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider block mb-1">
+            Legal Aid Cell
           </span>
-          <span className="text-2xl font-black text-green-600 dark:text-green-400 tabular-nums">
+          <span className="text-xl sm:text-2xl font-black text-green-600 dark:text-green-400 tabular-nums">
             Active
           </span>
         </div>
@@ -168,7 +168,7 @@ export default function IncidentsPage() {
                   onClick={() => setSelectedTopic(t.id)}
                   className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                     active
-                      ? 'bg-primary text-white shadow-sm'
+                      ? 'bg-red-600 text-white shadow-sm'
                       : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
                   }`}
                 >

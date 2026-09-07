@@ -107,7 +107,7 @@ export default function FeedPage() {
               onClick={() => setSelectedTag(t.id)}
               className={`px-3.5 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                 selectedTag === t.id
-                  ? 'bg-primary text-white shadow-sm'
+                  ? 'bg-[#0B3C5D] dark:bg-cyan-600 text-white shadow-sm'
                   : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
               }`}
             >

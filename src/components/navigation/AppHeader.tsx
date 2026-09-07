@@ -48,17 +48,17 @@ export const AppHeader: React.FC = () => {
     <header className="sticky top-0 z-[100] w-full border-b border-slate-200/60 dark:border-slate-800/80 bg-white/80 dark:bg-slate-950/80 backdrop-blur-xl px-4 md:px-8 py-3.5 transition-all">
       <div className="max-w-[1440px] mx-auto flex items-center justify-between">
         {/* Brand Logo & Tagline */}
-        <Link href="/" className="flex items-center gap-3.5 group">
-          <div className="bg-primary p-2 rounded-lg shadow-md group-hover:scale-105 transition-transform">
-            <Image src="/logo.png" alt="RCA Logo" width={22} height={22} priority className="brightness-125" />
+        <Link href="/" className="flex items-center gap-2.5 sm:gap-3.5 group min-w-0">
+          <div className="bg-primary p-1.5 sm:p-2 rounded-lg shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
+            <Image src="/logo.png" alt="RCA Logo" width={20} height={20} priority className="brightness-125 sm:w-[22px] sm:h-[22px]" />
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center gap-2">
-              <span className="text-base md:text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase leading-none">
+          <div className="flex flex-col min-w-0">
+            <div className="flex items-center gap-1.5">
+              <span className="text-sm sm:text-base md:text-lg font-black tracking-tight text-slate-900 dark:text-white uppercase leading-none truncate">
                 ROOT CAUSE <span className="text-secondary dark:text-cyan-400">APOLOGETICS</span>
               </span>
             </div>
-            <span className="text-[9px] font-bold text-muted dark:text-slate-400 uppercase tracking-[0.2em] mt-0.5">
+            <span className="hidden sm:block text-[8px] sm:text-[9px] font-bold text-muted dark:text-slate-400 uppercase tracking-[0.15em] mt-0.5 truncate">
               Presuppositional Intelligence & Incident Repository
             </span>
           </div>

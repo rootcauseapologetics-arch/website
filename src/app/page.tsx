@@ -46,19 +46,19 @@ export default function Home() {
               <span>Presuppositional Intelligence Engine</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-white leading-[1.08] tracking-tight mb-6">
-              Tracing the Truth to the <span className="text-cyan-200 italic font-normal underline decoration-highlight decoration-4 underline-offset-8">Root Cause</span>
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.15] tracking-tight mb-5">
+              Tracing the Truth to the <br className="sm:hidden" /><span className="text-cyan-200 italic font-normal underline decoration-highlight decoration-4 underline-offset-4 sm:underline-offset-8 inline-block">Root Cause</span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-cyan-50/80 leading-relaxed mb-8 font-normal max-w-2xl">
+            <p className="text-xs sm:text-base md:text-lg text-cyan-50/80 leading-relaxed mb-6 sm:mb-8 font-normal max-w-2xl">
               We investigate public claims, decompose worldview assumptions through 5-Whys root cause analysis, and provide grounded biblical responses for the Indian intellectual context.
             </p>
 
             {/* Quick Action Buttons */}
-            <div className="flex flex-wrap gap-3 items-center">
+            <div className="flex flex-wrap gap-2.5 sm:gap-3 items-center">
               <Link
                 href="/incidents"
-                className="px-6 py-3 rounded-xl bg-red-600/90 hover:bg-red-600 text-white text-xs font-black uppercase tracking-wider shadow-lg flex items-center gap-2 transition-all active:scale-95"
+                className="px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl bg-red-600/90 hover:bg-red-600 text-white text-xs font-black uppercase tracking-wider shadow-lg flex items-center gap-2 transition-all active:scale-95"
               >
                 <span>🚨</span>
                 <span>Persecution Alerts ({incidentStats.totalReports})</span>
@@ -66,9 +66,9 @@ export default function Home() {
 
               <button
                 onClick={() => setIsSubmitModalOpen(true)}
-                className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all"
+                className="px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 text-white text-xs font-bold uppercase tracking-wider transition-all"
               >
-                💡 Submit RCA Breakdown
+                💡 Submit RCA
               </button>
             </div>
           </div>
@@ -76,14 +76,14 @@ export default function Home() {
       </section>
 
       {/* 2. Platform Intelligence Bar (Live Metrics) */}
-      <section className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 py-6 px-4 sm:px-6 shadow-sm">
-        <div className="max-w-[1440px] mx-auto flex flex-wrap items-center justify-between gap-6">
-          <div className="flex flex-wrap gap-8 items-center">
+      <section className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 py-4 sm:py-6 px-4 sm:px-6 shadow-sm">
+        <div className="max-w-[1440px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6">
+          <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-8 items-center text-center sm:text-left">
             <div>
-              <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block">
-                Total RCA Case Studies
+              <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider sm:tracking-widest block truncate">
+                RCA Cases
               </span>
-              <span className="text-2xl font-black text-slate-900 dark:text-white tabular-nums">
+              <span className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white tabular-nums">
                 {allEntries.length}
               </span>
             </div>
@@ -91,10 +91,10 @@ export default function Home() {
             <div className="h-8 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
 
             <div>
-              <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block">
-                Verified Incidents Tracked
+              <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider sm:tracking-widest block truncate">
+                Incidents
               </span>
-              <span className="text-2xl font-black text-red-600 dark:text-red-400 tabular-nums">
+              <span className="text-xl sm:text-2xl font-black text-red-600 dark:text-red-400 tabular-nums">
                 {incidentStats.totalReports}
               </span>
             </div>
@@ -102,10 +102,10 @@ export default function Home() {
             <div className="h-8 w-px bg-slate-200 dark:bg-slate-800 hidden sm:block" />
 
             <div>
-              <span className="text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-widest block">
-                Intercessory Prayers Joined
+              <span className="text-[9px] sm:text-[10px] font-bold text-muted dark:text-slate-400 uppercase tracking-wider sm:tracking-widest block truncate">
+                Prayers
               </span>
-              <span className="text-2xl font-black text-highlight tabular-nums">
+              <span className="text-xl sm:text-2xl font-black text-highlight tabular-nums">
                 {incidentStats.activePrayers.toLocaleString()}+
               </span>
             </div>
@@ -162,7 +162,7 @@ export default function Home() {
                   onClick={() => setSelectedTag(tag.id)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all duration-200 ${
                     active
-                      ? 'bg-primary text-white shadow-md'
+                      ? 'bg-[#0B3C5D] dark:bg-cyan-600 text-white shadow-md'
                       : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >

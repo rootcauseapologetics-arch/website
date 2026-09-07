@@ -106,7 +106,7 @@ export default function ChurchesPage() {
                 onClick={() => setSelectedRegion(r.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                   selectedRegion === r.id
-                    ? 'bg-primary text-white shadow-sm'
+                    ? 'bg-[#0B3C5D] dark:bg-cyan-600 text-white shadow-sm'
                     : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
@@ -128,7 +128,7 @@ export default function ChurchesPage() {
                 onClick={() => setSelectedDenom(d.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                   selectedDenom === d.id
-                    ? 'bg-primary text-white shadow-sm'
+                    ? 'bg-[#0B3C5D] dark:bg-cyan-600 text-white shadow-sm'
                     : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
@@ -150,7 +150,7 @@ export default function ChurchesPage() {
                 onClick={() => setSelectedSize(s.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold whitespace-nowrap transition-all ${
                   selectedSize === s.id
-                    ? 'bg-primary text-white shadow-sm'
+                    ? 'bg-[#0B3C5D] dark:bg-cyan-600 text-white shadow-sm'
                     : 'bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100'
                 }`}
               >
